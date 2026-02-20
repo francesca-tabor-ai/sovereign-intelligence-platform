@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "dev:server": "tsx watch server/index.ts",
+    "seed": "tsx server/db/seed.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

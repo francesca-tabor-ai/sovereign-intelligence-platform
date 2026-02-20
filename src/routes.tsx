@@ -5,6 +5,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
+import { AllOrganisationsPage } from "./pages/AllOrganisationsPage";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Navigate to="/overview" replace /> },
+      { path: "organisations/all", element: <AllOrganisationsPage /> },
       { path: "*", element: <PlaceholderPage /> },
     ],
   },
