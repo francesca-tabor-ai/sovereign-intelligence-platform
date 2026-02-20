@@ -27,11 +27,9 @@ export function PlaceholderPage() {
 
   return (
     <div className="page-placeholder">
-      <div className="mb-2 text-sm font-medium text-slate-500 uppercase tracking-wider">
-        {section}
-      </div>
-      <h1 className="text-3xl font-bold text-slate-900 mb-4">{title}</h1>
-      <p className="text-slate-600 max-w-2xl">
+      <div className="page-section-label">{section}</div>
+      <h1 className="page-title">{title}</h1>
+      <p className="page-body max-w-2xl">
         This view is reserved for the {title} experience. Content and features
         will be implemented here.
       </p>

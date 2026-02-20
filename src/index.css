@@ -1,23 +1,93 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Design system: Humanist sans-serif, minimal + expressive colour, calm & confident
+   --------------------------------------------------------------------------- */
+
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-serif: "Georgia", serif;
+  /* Humanist sans-serif — high legibility, soft curves, technical but friendly */
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Source Sans 3", ui-sans-serif, system-ui, sans-serif; /* numbers: same family, tabular-nums */
 }
 
 :root {
-  --bg: #F8F9FA;
-  --ink: #0F172A;
-  --accent: #059669; /* Emerald 600 */
-  --line: rgba(15, 23, 42, 0.1);
+  /* Primary text: near-black */
+  --ink: #0a0a0b;
+  --ink-secondary: #52525b;
+  --ink-muted: #71717a;
+
+  /* Background: white dominant */
+  --bg: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #fafafa;
+
+  /* Cool greys: UI structure, dividers, secondary text */
+  --grey-50: #fafafa;
+  --grey-100: #f4f4f5;
+  --grey-200: #e4e4e7;
+  --grey-300: #d4d4d8;
+  --grey-400: #a1a1aa;
+  --grey-500: #71717a;
+  --grey-600: #52525b;
+  --grey-700: #3f3f46;
+  --grey-800: #27272a;
+  --grey-900: #18181b;
+
+  /* Lines and borders */
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+
+  /* Signature gradient: purples, blues, pinks, oranges — use sparingly */
+  --gradient-accent: linear-gradient(
+    135deg,
+    #7c3aed 0%,
+    #6366f1 25%,
+    #3b82f6 50%,
+    #ec4899 75%,
+    #f97316 100%
+  );
+  --gradient-accent-subtle: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(99, 102, 241, 0.06) 25%,
+    rgba(59, 130, 246, 0.06) 50%,
+    rgba(236, 72, 153, 0.06) 75%,
+    rgba(249, 115, 22, 0.06) 100%
+  );
+  /* Single accent for focused UI (e.g. active state) — violet from gradient */
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.08);
+  --accent-soft-hover: rgba(99, 102, 241, 0.12);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
 }
 
 body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headlines: large, bold, confident; body: generous line height */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* Data and numbers: clear, neutral, tabular for alignment */
+.data-value,
+[data-value] {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .grid-pattern {
@@ -26,33 +96,37 @@ body {
   background-size: 40px 40px;
 }
 
-.data-value {
-  font-family: var(--font-mono);
-}
-
 .serif-italic {
-  font-family: var(--font-serif);
+  font-family: Georgia, serif;
   font-style: italic;
 }
 
-/* App layout: left sidebar + main content */
+/* ---------------------------------------------------------------------------
+   App layout: white space, rounded UI, calm hierarchy
+   --------------------------------------------------------------------------- */
+
 .app-layout {
   display: flex;
   min-height: 100vh;
-  background-color: var(--bg);
+  background-color: var(--bg-subtle);
 }
 
 .app-main {
   flex: 1;
   min-width: 0;
-  padding: 2rem 2.5rem;
+  padding: 2.5rem 3rem;
+  background-color: var(--bg);
+  box-shadow: -1px 0 0 var(--line);
 }
 
-/* Left-hand sidebar */
+/* ---------------------------------------------------------------------------
+   Sidebar: white, cool greys, gradient used only for logo
+   --------------------------------------------------------------------------- */
+
 .sidebar {
   width: 280px;
   flex-shrink: 0;
-  background: white;
+  background: var(--bg-elevated);
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -60,8 +134,20 @@ body {
 }
 
 .sidebar-header {
-  padding: 1.25rem 1rem;
+  padding: 1.5rem 1.25rem;
   border-bottom: 1px solid var(--line);
+}
+
+.sidebar-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-accent);
+  color: white;
+  flex-shrink: 0;
 }
 
 .sidebar-nav {
@@ -71,33 +157,90 @@ body {
 }
 
 .sidebar-section {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.125rem;
 }
 
 .sidebar-link {
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s ease, background 0.15s ease;
+  border-radius: 0.75rem;
 }
 
 .sidebar-link-inactive {
-  color: var(--ink);
+  color: var(--grey-700);
 }
 
 .sidebar-link-inactive:hover {
-  color: var(--accent);
-  background: rgba(5, 150, 105, 0.06);
+  color: var(--ink);
+  background: var(--grey-100);
 }
 
 .sidebar-link-active {
   color: var(--accent);
   font-weight: 600;
-  background: rgba(5, 150, 105, 0.08);
+  background: var(--accent-soft);
 }
 
 .sidebar-children {
-  margin-left: 0.25rem;
+  margin-left: 0.5rem;
 }
 
-/* Placeholder page content */
+.sidebar-child-link {
+  display: block;
+  padding: 0.375rem 0.5rem 0.375rem 0.625rem;
+  margin-left: 0.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.sidebar-child-link-inactive {
+  color: var(--grey-600);
+}
+
+.sidebar-child-link-inactive:hover {
+  color: var(--ink);
+  background: var(--grey-50);
+}
+
+.sidebar-child-link-active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+  margin-left: 0;
+  padding-left: calc(0.625rem + 2px);
+}
+
+/* ---------------------------------------------------------------------------
+   Page content: typographic hierarchy, generous line height
+   --------------------------------------------------------------------------- */
+
 .page-placeholder {
-  max-width: 48rem;
+  max-width: 52rem;
+}
+
+.page-placeholder .page-section-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+  margin-bottom: 0.5rem;
+}
+
+.page-placeholder .page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.page-placeholder .page-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink-secondary);
 }
