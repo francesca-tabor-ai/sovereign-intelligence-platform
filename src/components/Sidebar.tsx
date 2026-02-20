@@ -74,7 +74,7 @@ export function Sidebar() {
       <div className="sidebar-header">
         <Link
           to="/"
-          className="flex items-center gap-2.5 shrink-0 rounded-xl hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+          className="flex items-center gap-2.5 shrink-0 rounded-xl hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
           aria-label="Go to landing page"
         >
           <div className="sidebar-logo">

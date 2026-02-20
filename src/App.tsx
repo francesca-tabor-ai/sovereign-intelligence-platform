@@ -60,7 +60,7 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-bottom border-slate-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="SIP home">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer" aria-label="SIP home">
             <div className="w-8 h-8 bg-emerald-600 rounded flex items-center justify-center">
               <Shield className="text-white w-5 h-5" />
             </div>
@@ -417,7 +417,7 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-slate-50 border-t border-slate-200 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="SIP home">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer" aria-label="SIP home">
             <div className="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center">
               <Shield className="text-white w-4 h-4" />
             </div>
