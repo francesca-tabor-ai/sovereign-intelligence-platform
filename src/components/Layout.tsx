@@ -1,9 +1,10 @@
 /**
- * App layout: left sidebar + main content.
+ * App layout: left sidebar + main content + floating chat.
  */
 
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
+import { ChatBot } from "./ChatBot";
 
 export function Layout() {
   return (
@@ -12,6 +13,7 @@ export function Layout() {
       <main className="app-main">
         <Outlet />
       </main>
+      <ChatBot />
     </div>
   );
 }
