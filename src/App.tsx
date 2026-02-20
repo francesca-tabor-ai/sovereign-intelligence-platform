@@ -4,6 +4,7 @@
  */
 
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { 
   Shield, 
@@ -59,12 +60,12 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-bottom border-slate-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="SIP home">
             <div className="w-8 h-8 bg-emerald-600 rounded flex items-center justify-center">
               <Shield className="text-white w-5 h-5" />
             </div>
             <span className="font-bold text-xl tracking-tight text-slate-900">SIP</span>
-          </div>
+          </Link>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="#problem" className="hover:text-emerald-600 transition-colors">Problem</a>
             <a href="#solution" className="hover:text-emerald-600 transition-colors">Solution</a>
@@ -89,6 +90,9 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <Badge>Sovereign Intelligence Platform</Badge>
+            <p className="text-slate-600 mb-4 max-w-2xl">
+              The landing page for Sovereign Intelligence Platform — measure, understand, and strengthen digital sovereignty across organisations, sectors, and nations.
+            </p>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
               Measure, Understand, and Strengthen Your <span className="text-emerald-600">Digital Sovereignty</span>
             </h1>
@@ -99,9 +103,9 @@ export default function App() {
               <button className="bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
                 Request a Demo <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-slate-50 transition-all flex items-center justify-center">
+              <Link to="/overview" className="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-slate-50 transition-all flex items-center justify-center">
                 View Platform Overview
-              </button>
+              </Link>
             </div>
             <p className="mt-12 text-sm font-medium text-slate-500 flex items-center gap-2">
               <FileCheck className="w-4 h-4 text-emerald-600" />
@@ -413,12 +417,12 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-slate-50 border-t border-slate-200 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="SIP home">
             <div className="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center">
               <Shield className="text-white w-4 h-4" />
             </div>
             <span className="font-bold text-lg tracking-tight text-slate-900">SIP</span>
-          </div>
+          </Link>
           <p className="text-slate-500 text-sm">
             © 2026 Sovereign Intelligence Platform. All rights reserved.
           </p>

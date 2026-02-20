@@ -1,19 +1,32 @@
 /**
- * App routes: layout with sidebar and placeholder content for all nav paths.
+ * App routes: landing at /, app with sidebar for /overview, /organisations, etc.
  */
 
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
 import { AllOrganisationsPage } from "./pages/AllOrganisationsPage";
+import App from "./App";
+
+function Root() {
+  const { pathname } = useLocation();
+  if (pathname === "/") return <App />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
+}
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Root />,
     children: [
-      { index: true, element: <Navigate to="/overview" replace /> },
+      { path: "overview", element: <PlaceholderPage /> },
+      { path: "overview/*", element: <PlaceholderPage /> },
       { path: "organisations/all", element: <AllOrganisationsPage /> },
+      { path: "organisations/*", element: <PlaceholderPage /> },
       { path: "*", element: <PlaceholderPage /> },
     ],
   },
