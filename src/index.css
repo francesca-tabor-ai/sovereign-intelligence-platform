@@ -34,3 +34,70 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
 }
+
+/* App layout: left sidebar + main content */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 2.5rem;
+}
+
+/* Left-hand sidebar */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: white;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 0.5rem 1.5rem 1rem;
+}
+
+.sidebar-section {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-link {
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar-link-inactive {
+  color: var(--ink);
+}
+
+.sidebar-link-inactive:hover {
+  color: var(--accent);
+  background: rgba(5, 150, 105, 0.06);
+}
+
+.sidebar-link-active {
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(5, 150, 105, 0.08);
+}
+
+.sidebar-children {
+  margin-left: 0.25rem;
+}
+
+/* Placeholder page content */
+.page-placeholder {
+  max-width: 48rem;
+}
